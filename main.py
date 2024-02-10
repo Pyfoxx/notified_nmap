@@ -7,6 +7,15 @@ import requests
 @click.option("--ip", default="127.0.0.1", help="The target IP")
 @click.option('--send', help="The URL where the result will be sent", required=True)
 def scan(ip, port, send):
+	"""
+	Scan method to perform a network scan using Nmap.
+
+	:param ip: The target IP address. Default is "127.0.0.1".
+	:param port: The ports to scan. Default is "0-1000".
+	:param send: The URL where the scan result will be sent. Required.
+	:return: The scan result notification.
+
+	"""
 	nm = nmap.PortScanner()
 	result = nm.scan(hosts=ip, ports=port, arguments="-sV -Pn")
 	# arguments="-sV"
